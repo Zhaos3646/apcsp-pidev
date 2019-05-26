@@ -7,7 +7,7 @@ float areaofCircle(float radius) {
 }
 
 int main() {
-  for (float i = 3.5; i < 12.5; i++) {
+  for (float i = 3.5; i <= 12.5; i++) {
      float solution = areaofCircle(i);
      printf("%f\n", solution);
   }
