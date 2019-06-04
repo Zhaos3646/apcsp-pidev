@@ -9,15 +9,15 @@ float currencyExchange (char inputString[255]) {
     char currencyArray[][255] = {"euro", "pound", "rupee", "dollar"};
     for(int i = 0; i<4; i++) {
 	if (strstr(inputString, currencyArray[i])) {
-	    count=count+1;
-	    if (count = 1) {
+	    count++;
+	    if (count == 1) {
 	        printf("hi\n");
 	    }
-	    else if (count = 2) {
+	    else if (count == 2) {
 		printf("no\n");
 	    }
 	    else {
-		printf("Too many currencies");
+		printf("Too many currencies\n");
 		break;
 	    }
 	}
