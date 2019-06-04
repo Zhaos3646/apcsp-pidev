@@ -4,6 +4,8 @@
 
 float currencyExchange (char inputString[255]) {
     int count = 0;
+    char* pos1;
+    char* pos2;
     char currencyFrom[255];
     char currencyTo[255];
     char currencyArray[][255] = {"euro", "pound", "rupee", "dollar"};
@@ -11,10 +13,12 @@ float currencyExchange (char inputString[255]) {
 	if (strstr(inputString, currencyArray[i])) {
 	    count++;
 	    if (count == 1) {
-	        printf("hi\n");
+	        pos1 = strstr(inputString, currencyArray[i]);
+		printf("%d\n", pos1);
 	    }
 	    else if (count == 2) {
-		printf("no\n");
+		pos2 = strstr(inputString, currencyArray[i]);
+		printf("%d\n", pos2);
 	    }
 	    else {
 		printf("Too many currencies\n");
