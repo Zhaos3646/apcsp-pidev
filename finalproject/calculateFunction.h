@@ -2,14 +2,6 @@
 #include <math.h>
 #include <string.h>
 
-//char[255] removeSpace (char inputString[255]) {
-//    for (int i = 0; i < strlen(inputString); i++) {
-//	if (inputString[i] = " ") {
-//    }
-//}
-
-
-
 float convert (char FromCurrency[255], char ToCurrency[255], float start) {
   char currencyArray[][255] = {"euro", "pound", "rupee", "dollar"};
   float rateExchange[] = {0.885597, 0.786504, 69.190658};
@@ -62,11 +54,11 @@ float currencyExchange (char inputString[255]) {
 	return(0);
     }
     if (pos1 > pos2) {
-	printf("To %s From %s\n", currencyTo, currencyFrom);
+	//printf("To %s From %s\n", currencyTo, currencyFrom);
 	strcpy(currencyTemp, currencyFrom);
 	strcpy(currencyFrom, currencyTo);
 	strcpy(currencyTo, currencyTemp);
-	printf("To %s From %s\n", currencyTo, currencyFrom);
+	//printf("To %s From %s\n", currencyTo, currencyFrom);
     }
     for (int i = 0; i < strlen(inputString); i++) {
 	if (inputString[i] == currencyFrom[0]) {
@@ -77,12 +69,10 @@ float currencyExchange (char inputString[255]) {
   char money[255];
   float fromValue;
   memcpy(money, &inputString[0], index-1);
-  printf("%s\n", money);
+  //printf("%s\n", money);
   sscanf(money, "%f", &fromValue);
-  printf("%f\n", fromValue);
+  //printf("%f\n", fromValue);
   float toValue = convert(currencyFrom, currencyTo, fromValue);
-  printf("%f\n", toValue);
-}
-int main() {
-    currencyExchange("5245 euros to dollars");
+  //printf("%f\n", toValue);
+  printf("%f %ss is equal to %f %ss\n", fromValue, currencyFrom, toValue, currencyTo);
 }
