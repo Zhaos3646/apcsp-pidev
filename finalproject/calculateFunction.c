@@ -7,10 +7,27 @@
 //	if (inputString[i] = " ") {
 //    }
 //}
-float Convert (char FromCurrency[255], char ToCurrency[255], int start) {
-  
+
+
+
+float convert (char FromCurrency[255], char ToCurrency[255], float start) {
+  char currencyArray[][255] = {"euro", "pound", "rupee", "dollar"};
+  float rateExchange[] = {0.885597, 0.786504, 69.190658};
   if (strcmp(FromCurrency, "dollar") == 0) {
-    
+    for (int i = 0; i < 3; i++) {
+	if (strcmp(ToCurrency, currencyArray[i]) == 0) {
+	    start = start * rateExchange[i];
+	    return(start);
+	}
+    }
+  }
+  else if (strcmp(ToCurrency, "dollar") == 0) {
+    for (int i = 0; i < 3; i++) {
+	if (strcmp(FromCurrency, currencyArray[i]) == 0) {
+	    start = start / rateExchange[i];
+	    return(start);
+	}
+    }
   }
 }
 
@@ -19,10 +36,10 @@ float currencyExchange (char inputString[255]) {
     int* pos1;
     int* pos2;
     int index;
+    char currencyArray[][255] = {"euro", "pound", "rupee", "dollar"};
     char currencyFrom[255];
     char currencyTo[255];
     char currencyTemp[255];
-    char currencyArray[][255] = {"euro", "pound", "rupee", "dollar"};
     for(int i = 0; i<4; i++) {
 	if (strstr(inputString, currencyArray[i])) {
 	    count++;
@@ -58,10 +75,14 @@ float currencyExchange (char inputString[255]) {
 	}
     }
   char money[255];
-  memcpy(money, &inputString[0], index-1); 
+  float fromValue;
+  memcpy(money, &inputString[0], index-1);
   printf("%s\n", money);
-  
+  sscanf(money, "%f", &fromValue);
+  printf("%f\n", fromValue);
+  float toValue = convert(currencyFrom, currencyTo, fromValue);
+  printf("%f\n", toValue);
 }
 int main() {
-    currencyExchange("5000 dollars to euros");
+    currencyExchange("5245 euros to dollars");
 }
